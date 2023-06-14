@@ -1,21 +1,29 @@
 package org.example;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import static java.lang.String.*;
 import static java.lang.System.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+    }
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+    void parseDishData() throws IOException {
+        BufferedReader dishReader = Files.newBufferedReader(Paths.get("C:\\Users\\ASUS\\IdeaProjects\\shardaswiggy\\data\\Dishes.csv"));
+        String line;
+        Dish[] menu  = new Dish[24];
+        for(int dishCount = 0;(line = dishReader.readLine())!=null;dishCount++) {
+            String[] dishdata = line.split(",");
+            menu[dishCount] = new Dish(dishdata[0],dishdata[1],dishdata[2],dishdata[3]);
+
         }
     }
 }
+

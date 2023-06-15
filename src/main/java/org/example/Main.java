@@ -21,7 +21,19 @@ public class Main {
         Dish[] menu  = new Dish[24];
         for(int dishCount = 0;(line = dishReader.readLine())!=null;dishCount++) {
             String[] dishdata = line.split(",");
-            menu[dishCount] = new Dish(dishdata[0],dishdata[1],dishdata[2],dishdata[3]);
+            menu[dishCount] = new Dish(dishdata[0],dishdata[1],dishdata[2],Integer.valueOf(dishdata[3]));
+
+        }
+    }
+    void parseRestroData() throws IOException {
+        BufferedReader restroReader = Files.newBufferedReader(Paths.get("C:\\Users\\ASUS\\IdeaProjects\\shardaswiggy\\data\\Restro.csv"));
+        String line;
+
+        Dish[] tempMenu = new Dish[24];
+        Restro[] restroArray = new Restro[6];
+        for(int restroCount = 0;(line = restroReader.readLine())!=null;restroCount++){
+            String[] restrodata = line.split(",");
+            restroArray[restroCount] = new Restro(restrodata[0],restrodata[1]);
 
         }
     }
